@@ -51,4 +51,12 @@ Isso gera o arquivo SQL e atualiza o banco de dados conforme especificado no seu
 
 O banco de dados está na pasta fonte do projeto com o título de "[rh.sql](rh.sql)".
 
+> Configure a conexão com o banco de dados em todos os arquivos php de acordo com suas configurações.
+> 
+Modelo padrão: 
+$server = "localhost";
+$user   = "root";
+$pass   = "";
+$bdname = "crowe";
+
 Após realizar essas etapas, abra a [página inicial](index.html) do projeto (index.html).
