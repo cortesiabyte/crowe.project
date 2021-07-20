@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Crowe - Processo Seletivo</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="imagens/logo.png">
+    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+    <link href="css/default.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/fonts.css" rel="stylesheet" type="text/css" media="all" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="js/script.js"></script>
+</head>
+<body class="fadeIn">
+    <div id="container">
+        <div id="logo">
+            <img src="imagens/logo-crowe.png">
+        </div>
+    </div>
+
+    <nav id="menu">
+        <ul>
+            <li><a href="load_index.html" accesskey="1" title="">Inicio</a></li>
+			<li><a href="load_cadastro.html" accesskey="2" title="">Cadastro</a></li>
+			<li><a href="load_candidatos.html" accesskey="3" title="">Candidatos</a></li>
+			<li><a href="load_alterardados.html" accesskey="4" title="">Alterar Dados</a></li>
+			<li><a href="load_excluirdados.html" accesskey="5" title="">Excluir Dados</a></li>
+			<li><a href="load_exibirdados.html" accesskey="6" title="">Exibir Informações</a></li>
+        </ul>
+    </nav>
+
+    <div id="wrapper">
+		<div id="featured-wrapper">
+            <h1 id="titulo">Alterar Dados</h1>	
+            <div class="ebox3" id="ebox3">
+			<form action="alterardados.php" method="POST">
+                <br><p> Para atualizar as informações cadastradas,  <br> informe o ID do <strong>CANDIDATO</strong> e altere os dados posteriores. </p>
+                    <div>
+                        <p>ID do Candidato:<br>
+                        <input name="id" type="text" placeholder="ID" required>
+                        </p>
+                    </div>
+					<div class="btnLC">
+						<input id="btn1" type="button" onclick="save()" class="btn1" value="Consultar"></input><br><br><br><br>
+					</div>     
+				</div>
+				<div class="ebox4" id="ebox4">
+                <h2 id="titulo3">Dados pessoais</h2>
+                <div class="concluir">
+                    <p>Nome completo:<br>
+                    <input name="nome" type="text" min="5" placeholder=" Bill Gates" autofocus required></p>
+                </div>
+
+                <div class="concluir">
+                    <p>Idade:<br>
+                    <input name="idade" type="text" min="5" placeholder=" 21" required></p>
+                </div>
+
+                <div class="concluir">
+                    <p>Data de nascimento:<br>
+                    <input name="nascimento" type="date" min="5" placeholder="" required></p>
+                </div>
+				
+                <div class="concluir">
+                    <p>CEP:<br>
+                    <input id="cep" name="cep" type="text" min="5" placeholder=" 01310-200" required></p>
+                </div>
+				
+                <div class="concluir">
+                    <p>Logradouro:<br>
+                        <input id="logradouro" name="logradouro" type="text" min="5" placeholder=" Rua Dois" required></p>
+                    </div>
+                    
+                <div class="concluir">
+                    <p>Número:<br>
+                    <input id="numero" name="numero" type="text" min="5" placeholder=" 311" required></p>
+                </div>
+                
+                <div class="concluir">
+                    <p>Complemento:<br>
+                    <input id="complemento" name="complemento" type="text" min="5" placeholder="" required></p>
+                </div>
+
+                <div class="concluir">
+                    <p>Cidade:<br>
+                    <input id="cidade" name="cidade" type="text" min="5" placeholder=" Campinas" required></p>
+                </div>
+
+                <div class="concluir">
+                    <p>Estado:<br>
+                    <input id="uf" name="estado" type="text" min="5" placeholder=" SP" required></p>
+                </div>
+             
+                <div class="concluir">
+                    <p>E-mail:<br>
+                        <input name="email" type="email" min="5" placeholder=" contato@gmail.com" required></p>
+                </div><br><br><br><br>
+                
+                <div class="btnLC1">
+                    <button class="btn1" type="submit">Alterar Dados</button><br>
+                    <button class="btn1" type="button" onclick="Back()">Voltar</button>
+                </div><br>
+			</form>	
+            </div>
+        </div>
+	</div>
+    
+    <div id="copyright">
+        <p>&copy; CROWE. All rights reserved. | Processo seletivo</p>
+    </div>
+    <button onClick="backToTop();" id="btnTop">TOPO</button>
+	<script type="text/javascript">
+	$("#cep").focusout(function(){
+		$.ajax({
+			url: 'https://viacep.com.br/ws/'+$(this).val()+'/json/unicode/',
+			dataType: 'json',
+			success: function(resposta){
+				$("#logradouro").val(resposta.logradouro);
+				$("#cidade").val(resposta.localidade);
+				$("#uf").val(resposta.uf);
+				$("#numero").focus();
+			}
+		});
+	});
+	</script>
+</body>
+</html>
